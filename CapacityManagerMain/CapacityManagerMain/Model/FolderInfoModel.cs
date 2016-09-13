@@ -14,5 +14,6 @@ namespace CapacityManagerMain.Model
         public string folder_name { get; set; }
         public long last_write_time { get; set; }
         public long create_time { get; set; }
+        public int folder_hash { get; set; }
     }
 }

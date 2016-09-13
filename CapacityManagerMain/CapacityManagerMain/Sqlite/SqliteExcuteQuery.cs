@@ -23,7 +23,7 @@ namespace CapacityManagerMain.Sqlite
                 SQLiteCommand cmd = new SQLiteCommand(sql, conn);
                 cmd.ExecuteNonQuery();
 
-                sql = @"select last_insert_rowid()";
+                sql = SqliteQueryCreater.lastIndex();
                 cmd = new SQLiteCommand(sql, conn);
                 long lastId123 = (long)cmd.ExecuteScalar();
 

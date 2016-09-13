@@ -26,7 +26,10 @@ namespace CapacityManagerMain.FileHelper
         private void consoleOutAllFileList(DirectoryInfo dirInfo)
         {
             FileInfo[] files = dirInfo.GetFiles("*.*");
+            //파라미터폴더 내의 모든 폴더 획득
             DirectoryInfo[] folders = dirInfo.GetDirectories("*");
+
+            //디렉토리를 해쉬값 비교
 
             FolderListDisposer(folders);
             FileListDisposer(files);

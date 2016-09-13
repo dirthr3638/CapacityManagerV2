@@ -4,3 +4,9 @@ C:\Users\Administrator\Documents\SRC\CapacityManager\CapacityManagerMain\Capacit
 C:\Users\Administrator\Documents\SRC\CapacityManager\CapacityManagerMain\CapacityManagerService\obj\Debug\CapacityManagerService.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Documents\SRC\CapacityManager\CapacityManagerMain\CapacityManagerService\obj\Debug\CapacityManagerService.exe
 C:\Users\Administrator\Documents\SRC\CapacityManager\CapacityManagerMain\CapacityManagerService\obj\Debug\CapacityManagerService.pdb
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CapacityManagerService\bin\Debug\CapacityManagerService.exe.config
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CapacityManagerService\bin\Debug\CapacityManagerService.exe
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CapacityManagerService\bin\Debug\CapacityManagerService.pdb
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CapacityManagerService\obj\Debug\CapacityManagerService.csprojResolveAssemblyReference.cache
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CapacityManagerService\obj\Debug\CapacityManagerService.exe
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CapacityManagerService\obj\Debug\CapacityManagerService.pdb

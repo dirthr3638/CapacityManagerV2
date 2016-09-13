@@ -4,14 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SQLite;
+using System.IO;
 
 namespace CapacityManagerMain.Sqlite
 {
     class SqliteCreator
     {
-        public void createSqlFile()
+        public void createSqlFile(bool force = false)
         {
-            SQLiteConnection.CreateFile(SqliteQueryCreater.SqlDbPath);
+            //파일이 존재하지 않거나 강제플래그가 TRUE이면 파일을만듬
+            if (!File.Exists(SqliteQueryCreater.SqlDbPath) || force) { 
+                SQLiteConnection.CreateFile(SqliteQueryCreater.SqlDbPath);
+            }
         }
 
         public void createScheme()
@@ -22,42 +26,19 @@ namespace CapacityManagerMain.Sqlite
             m_dbConnection.Open();
 
             //드라이브테이블 생성
-            string sql = 
-                @"CREATE TABLE `DRIVE_INFO` (	
-                    `drive_code`    INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,	
-                    `drive_name`	TEXT NOT NULL,	
-                    `drive_type`	TEXT NOT NULL,	
-                    `drive_hash`	INTEGER NOT NULL,	
-                    `use_yn`	INTEGER NOT NULL DEFAULT 1 )";
+            string sql = SqliteQueryCreater.createDrive();
 
             SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
 
             //폴더테이블 생성
-            sql = @"CREATE TABLE `FOLDER_INFO` (	
-                    `folder_code`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,		
-                    `parent_fd_cd`	INTEGER,	
-                    `drive_code`	INTEGER NOT NULL,	
-                    `folder_name`	TEXT NOT NULL,
-                    `last_write_time`	NUMERIC NOT NULL,	
-                    `create_time`	NUMERIC NOT NULL,	
-                FOREIGN KEY(`parent_fd_cd`) REFERENCES `FOLDER_INFO`(`folder_code`),	
-                FOREIGN KEY(`drive_code`) REFERENCES `DRIVE_INFO`(`drive_code`)) ";
+            sql = SqliteQueryCreater.createFolder();
 
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
 
             //파일테이블 생성
-            sql = @"CREATE TABLE `FILE_INFO` (	
-                    `file_code`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,	
-                    `folder_code`	INTEGER NOT NULL,	
-                    `file_name`	TEXT NOT NULL,	
-                    `file_ext`	TEXT NOT NULL,	
-                    `file_path`	TEXT NOT NULL,	
-                    `file_volume`	NUMERIC NOT NULL,	
-                    `last_write_time`	NUMERIC NOT NULL,	
-                    `create_time`	NUMERIC NOT NULL,	
-                FOREIGN KEY(`folder_code`) REFERENCES `FOLDER_INFO`(`folder_code`))";
+            sql = SqliteQueryCreater.createFile();
 
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
