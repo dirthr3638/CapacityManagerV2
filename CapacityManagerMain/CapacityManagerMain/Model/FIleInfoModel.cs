@@ -16,7 +16,5 @@ namespace CapacityManagerMain.Model
         public long file_volume { get; set; }
         public long last_write_time { get; set; }
         public long create_time { get; set; }
-        public int file_hash { get; set; }
-
     }
 }

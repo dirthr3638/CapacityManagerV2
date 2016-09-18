@@ -12,6 +12,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using CapacityManagerMain.FileHelper;
+
 namespace CapacityManagerMain
 {
     /// <summary>
@@ -23,6 +25,9 @@ namespace CapacityManagerMain
         {
             InitializeComponent();
 
+            //DirectorySearcher dirs = new DirectorySearcher();
+            //dirs.getDirectoryWriteTime("D:/");
+
             //            FileHelper.FileSearcher fSearcher = new FileHelper.FileSearcher();
             //            fSearcher.fileListInFolder("X:/");
 
@@ -31,8 +36,11 @@ namespace CapacityManagerMain
             createor.createScheme();
 
             FileHelper.DriveSearcher fDrive = new FileHelper.DriveSearcher();
-            //            fDrive.driveinfo();
             fDrive.searchDrive();
+
+            //DriveSearcher Drive = new DriveSearcher();
+            //Drive.getDriveListFromSql();
+
         }
     }
 }

@@ -27,7 +27,6 @@ namespace CapacityManagerMain.Sqlite
             string sql = "SELECT * FROM member";
             var adpt = new SQLiteDataAdapter(sql, sConnectionPath);
             adpt.Fill(ds);
-
             return ds;
         }
     }

@@ -76,11 +76,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="FileHelper\DirectorySearcher.cs" />
     <Compile Include="FileHelper\DriveSearcher.cs" />
     <Compile Include="Model\DriveModel.cs" />
     <Compile Include="Model\FIleInfoModel.cs" />
     <Compile Include="Model\FolderInfoModel.cs" />
     <Compile Include="PathHelper\UserPath.cs" />
+    <Compile Include="Searcher\MainSearcher.cs" />
     <Compile Include="Sqlite\SqliteConnector.cs" />
     <Compile Include="Sqlite\SqliteCreator.cs" />
     <Compile Include="Sqlite\SqliteExcuteQuery.cs" />

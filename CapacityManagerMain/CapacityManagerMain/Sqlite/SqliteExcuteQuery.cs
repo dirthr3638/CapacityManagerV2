@@ -13,7 +13,7 @@ namespace CapacityManagerMain.Sqlite
         //return value : drive index
         public int InsertDriveTable(DriveModel drive)
         {
-            int lastId = -1;
+            long lastId = -1;
             String ConnectionInfo = "Data Source=" + SqliteQueryCreater.SqlDbPath + ";Version=3;";
 
             using (SQLiteConnection conn = new SQLiteConnection(ConnectionInfo))
@@ -25,12 +25,11 @@ namespace CapacityManagerMain.Sqlite
 
                 sql = SqliteQueryCreater.lastIndex();
                 cmd = new SQLiteCommand(sql, conn);
-                long lastId123 = (long)cmd.ExecuteScalar();
+                lastId = (long)cmd.ExecuteScalar();
 
                 conn.Close();
             }
-
-            return lastId;
+            return unchecked((int)lastId);
         }
 
         //return value : drive index
@@ -40,6 +39,30 @@ namespace CapacityManagerMain.Sqlite
             SQLiteCommand cmd = new SQLiteCommand(sql, conn);
             cmd.ExecuteNonQuery();
             return 1;
+        }
+
+        public List<DriveModel> SelectDriveModel()
+        {
+            String ConnectionInfo = "Data Source=" + SqliteQueryCreater.SqlDbPath + ";Version=3;";
+
+            SQLiteConnection m_dbConnection = new SQLiteConnection(ConnectionInfo);
+            m_dbConnection.Open();
+            
+            string sql = SqliteQueryCreater.selectDriveInfoList();
+            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+            SQLiteDataReader reader = command.ExecuteReader();
+
+            List<DriveModel> result = new List<DriveModel>();
+
+            while (reader.Read()) {
+                DriveModel driveModel = new DriveModel();
+                Console.WriteLine("drive_code: " + reader["drive_code"] + "\tdrive_name: " + reader["drive_name"] + "\tdrive_type: " + reader["drive_type"]);
+                result.Add(driveModel);
+            }
+
+            m_dbConnection.Close();
+
+            return result;
         }
 
         public int InsertFolderTable(FolderInfoModel folder)
