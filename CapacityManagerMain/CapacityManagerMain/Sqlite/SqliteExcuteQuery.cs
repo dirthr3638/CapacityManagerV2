@@ -14,9 +14,8 @@ namespace CapacityManagerMain.Sqlite
         public int InsertDriveTable(DriveModel drive)
         {
             long lastId = -1;
-            String ConnectionInfo = "Data Source=" + SqliteQueryCreater.SqlDbPath + ";Version=3;";
-
-            using (SQLiteConnection conn = new SQLiteConnection(ConnectionInfo))
+            
+            using (SQLiteConnection conn = new SQLiteConnection(SqliteQueryCreater.SqlDbPath))
             {
                 conn.Open();
                 string sql = SqliteQueryCreater.insertDrive(drive);
@@ -43,9 +42,7 @@ namespace CapacityManagerMain.Sqlite
 
         public List<DriveModel> SelectDriveModel()
         {
-            String ConnectionInfo = "Data Source=" + SqliteQueryCreater.SqlDbPath + ";Version=3;";
-
-            SQLiteConnection m_dbConnection = new SQLiteConnection(ConnectionInfo);
+            SQLiteConnection m_dbConnection = new SQLiteConnection(SqliteQueryCreater.SqlDbPath);
             m_dbConnection.Open();
             
             string sql = SqliteQueryCreater.selectDriveInfoList();
@@ -56,7 +53,6 @@ namespace CapacityManagerMain.Sqlite
 
             while (reader.Read()) {
                 DriveModel driveModel = new DriveModel();
-                Console.WriteLine("drive_code: " + reader["drive_code"] + "\tdrive_name: " + reader["drive_name"] + "\tdrive_type: " + reader["drive_type"]);
                 result.Add(driveModel);
             }
 

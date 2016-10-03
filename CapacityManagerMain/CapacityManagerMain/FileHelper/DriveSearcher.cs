@@ -11,52 +11,31 @@ namespace CapacityManagerMain.FileHelper
 {
     class DriveSearcher
     {
-        private void driveinfo()
-        {
-            foreach (var drive in DriveInfo.GetDrives())
-            {
-                double freeSpace = 0;
-                double totalSpace = 0;
-                double percent = 0;
-                long availFreeSize = 0;
-                long totalSize = 0;
-                float num = 0;
-
-                try
-                { 
-                    freeSpace = drive.TotalFreeSpace;
-                    totalSpace = drive.TotalSize;
-                    percent = (freeSpace / totalSpace) * 100;
-                    num = (float)percent;
-                    availFreeSize = drive.AvailableFreeSpace;
-                    totalSize = drive.TotalSize;
-                }
-                catch (IOException e)
-                {
-                    Console.WriteLine(e.Message);
-                }
-
-                //console.writeline("drive:{0} with {1} % free", drive.name, num);
-                //console.writeline("space remaining:{0}", availfreesize);
-                //console.writeline("percent free space:{0}", percent);
-                //console.writeline("space used:{0}", totalsize);
-                //console.writeline("type: {0}", drive.drivetype);
-            }
-        }
-
         //sqlite 에서 드라이브 가져와서 해시값비교
-        public void searchDrive()
+        public List<DriveModel> searchDriveList()
         {
+            List<DriveModel> resultList = new List<DriveModel>();
+
             foreach (var drive in DriveInfo.GetDrives())
             {
                 DriveModel model = new DriveModel();
                 model.drive_name = drive.Name;
                 model.drive_type = drive.DriveType.ToString();
-                
-                //드라이브 없으면 데이터 삽입
-                SqliteExcuteQuery exQuery = new SqliteExcuteQuery();
-                exQuery.InsertDriveTable(model);
+
+                resultList.Add(model);
             }
+
+            return resultList;
+        }
+
+        public List<DriveModel> getSqlDriveList()
+        {
+            List<DriveModel> resultList = new List<DriveModel>();
+
+            SqliteExcuteQuery exQuery = new SqliteExcuteQuery();
+        
+
+            return resultList;
         }
 
         //SQLite 에서 드라이브 정보를 가져옴

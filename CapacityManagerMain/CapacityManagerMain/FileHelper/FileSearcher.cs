@@ -56,7 +56,7 @@ namespace CapacityManagerMain.FileHelper
                 }
                 catch(Exception e)
                 {
-                    Console.WriteLine(oneFolder.FullName);
+                    Console.WriteLine(oneFolder.FullName + " || " + e.Message);
                 }
             }
  
