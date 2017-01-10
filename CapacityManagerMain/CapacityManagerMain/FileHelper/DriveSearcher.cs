@@ -11,7 +11,7 @@ namespace CapacityManagerMain.FileHelper
 {
     class DriveSearcher
     {
-        //sqlite 에서 드라이브 가져와서 해시값비교
+        //드라이브리스트를 가져옴
         public List<DriveModel> searchDriveList()
         {
             List<DriveModel> resultList = new List<DriveModel>();
@@ -22,18 +22,11 @@ namespace CapacityManagerMain.FileHelper
                 model.drive_name = drive.Name;
                 model.drive_type = drive.DriveType.ToString();
 
+                if (drive.DriveType.Equals(DriveType.Fixed))
+                    model.size = drive.TotalSize;
+
                 resultList.Add(model);
             }
-
-            return resultList;
-        }
-
-        public List<DriveModel> getSqlDriveList()
-        {
-            List<DriveModel> resultList = new List<DriveModel>();
-
-            SqliteExcuteQuery exQuery = new SqliteExcuteQuery();
-        
 
             return resultList;
         }

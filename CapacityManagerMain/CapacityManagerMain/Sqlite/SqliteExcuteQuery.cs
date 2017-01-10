@@ -11,38 +11,43 @@ namespace CapacityManagerMain.Sqlite
     class SqliteExcuteQuery
     {
         //return value : drive index
-        public int InsertDriveTable(DriveModel drive)
+        public int InsertDrivesTable(DriveModels drive)
         {
             long lastId = -1;
             
             using (SQLiteConnection conn = new SQLiteConnection(SqliteQueryCreater.SqlDbPath))
             {
                 conn.Open();
-                string sql = SqliteQueryCreater.insertDrive(drive);
-                SQLiteCommand cmd = new SQLiteCommand(sql, conn);
-                cmd.ExecuteNonQuery();
 
-                sql = SqliteQueryCreater.lastIndex();
-                cmd = new SQLiteCommand(sql, conn);
-                lastId = (long)cmd.ExecuteScalar();
-
+                foreach(DriveModel item in drive)
+                {
+                    string sql = SqliteQueryCreater.insertDrive(item);
+                    SQLiteCommand cmd = new SQLiteCommand(sql, conn);
+                    cmd.ExecuteNonQuery();
+                    sql = SqliteQueryCreater.lastIndex();
+                    cmd = new SQLiteCommand(sql, conn);
+                    lastId = (long)cmd.ExecuteScalar();
+                }
+                
                 conn.Close();
             }
             return unchecked((int)lastId);
         }
 
         //return value : drive index
-        public int InsertDriveTable(DriveModel drive, SQLiteConnection conn)
+        public void InsertDrivesTable(DriveModels drive, SQLiteConnection conn)
         {
-            string sql = SqliteQueryCreater.insertDrive(drive);
-            SQLiteCommand cmd = new SQLiteCommand(sql, conn);
-            cmd.ExecuteNonQuery();
-            return 1;
+            foreach (DriveModel item in drive)
+            {
+                string sql = SqliteQueryCreater.insertDrive(item);
+                SQLiteCommand cmd = new SQLiteCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+            }
         }
 
         public List<DriveModel> SelectDriveModel()
         {
-            SQLiteConnection m_dbConnection = new SQLiteConnection(SqliteQueryCreater.SqlDbPath);
+            SQLiteConnection m_dbConnection = new SQLiteConnection(SqliteQueryCreater.SqlConnectionString);
             m_dbConnection.Open();
             
             string sql = SqliteQueryCreater.selectDriveInfoList();
@@ -53,7 +58,15 @@ namespace CapacityManagerMain.Sqlite
 
             while (reader.Read()) {
                 DriveModel driveModel = new DriveModel();
+                driveModel.drive_code = Int32.Parse(reader["drive_code"].ToString());
+                driveModel.drive_name = reader["drive_name"].ToString();
+                driveModel.drive_type = reader["drive_type"].ToString();
+                driveModel.size = long.Parse(reader["size"].ToString());
+                driveModel.search_yn = Int32.Parse(reader["search_yn"].ToString());
+                driveModel.use_yn = Int32.Parse(reader["use_yn"].ToString());
+
                 result.Add(driveModel);
+
             }
 
             m_dbConnection.Close();

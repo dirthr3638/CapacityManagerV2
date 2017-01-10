@@ -18,6 +18,14 @@ namespace CapacityManagerMain.Sqlite
             }
         }
 
+
+        public void deleteSqlFile()
+        {
+            if (File.Exists(SqliteQueryCreater.SqlDbPath))
+                File.Delete(SqliteQueryCreater.SqlDbPath);
+        }
+
+
         public void createScheme()
         {
             String ConnectionInfo = "Data Source=" + SqliteQueryCreater.SqlDbPath + ";Version=3;";
@@ -45,7 +53,6 @@ namespace CapacityManagerMain.Sqlite
             
             m_dbConnection.Close();
         }
-
 
     }
 }

@@ -13,6 +13,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using CapacityManagerMain.FileHelper;
+using CapacityManagerMain.Searcher;
 
 namespace CapacityManagerMain
 {
@@ -32,11 +33,14 @@ namespace CapacityManagerMain
             //            fSearcher.fileListInFolder("X:/");
 
             Sqlite.SqliteCreator createor = new Sqlite.SqliteCreator();
+
+            createor.deleteSqlFile();
+
             createor.createSqlFile();
             createor.createScheme();
 
-            FileHelper.DriveSearcher fDrive = new FileHelper.DriveSearcher();
-            fDrive.searchDrive();
+            MainSearcher searcher = new MainSearcher();
+            searcher.mainSearch();
 
             //DriveSearcher Drive = new DriveSearcher();
             //Drive.getDriveListFromSql();

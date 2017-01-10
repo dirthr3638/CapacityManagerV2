@@ -22,6 +22,20 @@ namespace CapacityManagerMain.FileHelper
             Console.WriteLine("폴더갯수 ::: " + FolderCount + ", 파일갯수::: " + FileCount);
         }
 
+        public List<FileInfo> getFilesInDrive(DriveModel drive)
+        {
+            List<FileInfo> files = new List<FileInfo>();
+
+            DirectoryInfo dir = new DirectoryInfo(drive.drive_name);
+
+            foreach (FileInfo item in dir.GetFiles())
+            {
+                files.Add(item);
+            }
+
+            return files;
+        }
+
         //재귀함수
         private void consoleOutAllFileList(DirectoryInfo dirInfo)
         {

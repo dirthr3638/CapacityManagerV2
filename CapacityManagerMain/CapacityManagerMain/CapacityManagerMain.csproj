@@ -83,7 +83,6 @@
     <Compile Include="Model\FolderInfoModel.cs" />
     <Compile Include="PathHelper\UserPath.cs" />
     <Compile Include="Searcher\MainSearcher.cs" />
-    <Compile Include="Sqlite\SqliteConnector.cs" />
     <Compile Include="Sqlite\SqliteCreator.cs" />
     <Compile Include="Sqlite\SqliteExcuteQuery.cs" />
     <Compile Include="Sqlite\SqliteQueryCreater.cs" />

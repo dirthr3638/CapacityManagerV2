@@ -19,12 +19,21 @@ namespace CapacityManagerMain.Sqlite
             }
         }
 
+        static public string SqlConnectionString
+        {
+            get
+            {
+                return "Data Source=" + sqlPullPath + ";";
+            }
+        }
+
         static public string createDrive()
         {
             return @"CREATE TABLE `DRIVE_INFO` (	
                     `drive_code`    INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,	
                     `drive_name`	TEXT NOT NULL,	
-                    `drive_type`	TEXT NOT NULL,	
+                    `drive_type`	TEXT NOT NULL,                
+                    `size`	    INTEGER NOT NULL,
                     `search_yn`	INTEGER NOT NULL,	
                     `use_yn`	INTEGER NOT NULL DEFAULT 1 )";
         }
@@ -59,9 +68,10 @@ namespace CapacityManagerMain.Sqlite
 
         static public string insertDrive(DriveModel drive)
         {
-            return @"INSERT INTO DRIVE_INFO(drive_name, drive_type, search_yn, use_yn) VALUES ('" + 
+            return @"INSERT INTO DRIVE_INFO(drive_name, drive_type, size, search_yn, use_yn) VALUES ('" + 
                 drive.drive_name + "','" +
                 drive.drive_type + "'," +
+                drive.size + "," +
                 drive.search_yn + "," +
                 drive.use_yn + 
                 ");";
@@ -97,14 +107,10 @@ namespace CapacityManagerMain.Sqlite
             return @"select last_insert_rowid()";
         }
 
-        static public string selectDirectoryHashCode()
-        {
-            return @"SELECT folder_hash FROM FOLDER_INFO";
-        }
 
         static public string selectDriveInfoList()
         {
-            return @"SELECT * FROM DRIVE_INFO";
+            return @"SELECT drive_code,drive_name,drive_type,size,search_yn,use_yn FROM DRIVE_INFO";
         }
 
     }
