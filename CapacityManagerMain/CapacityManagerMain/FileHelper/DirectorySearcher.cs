@@ -17,21 +17,46 @@ namespace CapacityManagerMain.FileHelper
             return dirInfo.LastWriteTime.Ticks;
         }
 
-        public List<DirectoryInfo> getDirectoryInDrive(DriveModel drive)
+        public List<FolderInfoModel> getDirectoryInDrive(DriveModel drive)
         {
-            List<DirectoryInfo> derectoreis = new List<DirectoryInfo>();
+            DirectoryInfo di = new DirectoryInfo(drive.drive_name);
+            List<FolderInfoModel> derectories = new List<FolderInfoModel>();
 
-            DirectoryInfo dir = new DirectoryInfo(drive.drive_name);
-
-            foreach(DirectoryInfo item in dir.GetDirectories())
+            foreach (DirectoryInfo item in di.GetDirectories())
             {
-                derectoreis.Add(item);
+                FolderInfoModel fItem = new FolderInfoModel();
+                fItem.drive_code = drive.drive_code;
+                fItem.folder_path = item.FullName;
+                fItem.folder_name = item.Name;
+                fItem.last_write_time = item.LastWriteTime.Ticks;
+                fItem.create_time = item.CreationTime.Ticks;
+
+                derectories.Add(fItem);
             }
 
-            return derectoreis;
+            return derectories;
         }
 
+        public List<FolderInfoModel> getDirectoryInDirectory(FolderInfoModel directory)
+        {
+            List<FolderInfoModel> derectories = new List<FolderInfoModel>();
+            DirectoryInfo di = new DirectoryInfo(directory.folder_path);
 
+            foreach (DirectoryInfo item in di.GetDirectories())
+            {
+                FolderInfoModel fItem = new FolderInfoModel();
 
+                fItem.parent_fd_cd = directory.folder_code;
+                fItem.drive_code = directory.drive_code;
+                fItem.folder_path = item.FullName;
+                fItem.folder_name = item.Name;
+                fItem.last_write_time = item.LastWriteTime.Ticks;
+                fItem.create_time = item.CreationTime.Ticks;
+
+                derectories.Add(fItem);
+            }
+
+            return derectories;
+        }
     }
 }

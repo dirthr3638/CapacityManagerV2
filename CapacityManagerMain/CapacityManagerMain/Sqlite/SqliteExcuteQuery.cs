@@ -74,6 +74,8 @@ namespace CapacityManagerMain.Sqlite
             return result;
         }
 
+
+
         public int InsertFolderTable(FolderInfoModel folder)
         {
             using (SQLiteConnection conn = new SQLiteConnection(SqliteQueryCreater.SqlDbPath))
@@ -86,6 +88,18 @@ namespace CapacityManagerMain.Sqlite
             }
 
             return 1;
+        }
+
+        public long InsertFolderTable(FolderInfoModel folder, SQLiteConnection conn)
+        {
+            string sql = SqliteQueryCreater.insertFolder(folder);
+            SQLiteCommand cmd = new SQLiteCommand(sql, conn);
+            cmd.ExecuteNonQuery();
+            sql = SqliteQueryCreater.lastIndex();
+            cmd = new SQLiteCommand(sql, conn);
+            long lastId = (long)cmd.ExecuteScalar();
+
+            return lastId;
         }
 
         public int InsertFileTable(FIleInfoModel file)
@@ -101,6 +115,14 @@ namespace CapacityManagerMain.Sqlite
 
             return 1;
         }
+
+        public void InsertFileTable(FIleInfoModel file, SQLiteConnection conn)
+        {
+            string sql = SqliteQueryCreater.insertFile(file);
+            SQLiteCommand cmd = new SQLiteCommand(sql, conn);
+            cmd.ExecuteNonQuery();
+        }
+
 
         public int InsertFileListTableTx(List<FIleInfoModel> files)
         {

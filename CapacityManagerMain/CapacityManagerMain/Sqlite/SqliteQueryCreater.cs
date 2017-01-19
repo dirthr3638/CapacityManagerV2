@@ -23,7 +23,7 @@ namespace CapacityManagerMain.Sqlite
         {
             get
             {
-                return "Data Source=" + sqlPullPath + ";";
+                return "Data Source=" + sqlPullPath + ";Journal Mode=Off;";
             }
         }
 
@@ -44,6 +44,7 @@ namespace CapacityManagerMain.Sqlite
                     `folder_code`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,		
                     `parent_fd_cd`	INTEGER,	
                     `drive_code`	INTEGER NOT NULL,	
+                    `folder_path`	TEXT NOT NULL,	
                     `folder_name`	TEXT NOT NULL,
                     `last_write_time`	NUMERIC NOT NULL,	
                     `search_yn`	INTEGER NOT NULL,	
@@ -59,7 +60,6 @@ namespace CapacityManagerMain.Sqlite
                     `folder_code`	INTEGER NOT NULL,	
                     `file_name`	TEXT NOT NULL,	
                     `file_ext`	TEXT NOT NULL,	
-                    `file_path`	TEXT NOT NULL,	
                     `file_volume`	NUMERIC NOT NULL,	
                     `last_write_time`	NUMERIC NOT NULL,	
                     `create_time`	NUMERIC NOT NULL,
@@ -79,25 +79,25 @@ namespace CapacityManagerMain.Sqlite
 
         static public string insertFolder(FolderInfoModel folder)
         {
-            return @"INSERT INTO FOLDER_INFO(parent_fd_cd, drive_code, folder_name, search_yn, last_write_time, create_time) VALUES (" +
+            return @"INSERT INTO FOLDER_INFO(parent_fd_cd, drive_code, folder_path, folder_name, last_write_time, search_yn, create_time) VALUES (" +
                 folder.parent_fd_cd + "," +
-                folder.drive_code + "," +
-                folder.folder_name + "," +
-                folder.search_yn + "," +
+                folder.drive_code + ",'" +
+                folder.folder_path + "','" +
+                folder.folder_name + "'," +
                 folder.last_write_time + "," +
+                folder.search_yn + "," +
                 folder.create_time +
                 ");";
         }
 
         static public string insertFile(FIleInfoModel file)
         {
-            return @"INSERT INTO FILE_INFO(folder_code, file_name, file_ext, file_path, file_volume, last_write_time, create_time) VALUES (" +
-                file.folder_code + "," +
-                file.file_name + "," +
-                file.file_ext + "," +
-                file.file_path + "," +
-                file.file_volume +
-                file.last_write_time +
+            return @"INSERT INTO FILE_INFO(folder_code, file_name, file_ext, file_volume, last_write_time, create_time) VALUES (" +
+                file.folder_code + ",'" +
+                file.file_name + "','" +
+                file.file_ext + "'," +
+                file.file_volume + "," +
+                file.last_write_time + "," +
                 file.create_time +
                 ");";
         }

@@ -48,21 +48,87 @@ namespace CapacityManagerMain.Searcher
 
             driveModels.AddRange(sDrive.getDriveListFromSql());
 
+
             foreach(DriveModel item in driveModels)
             {
                 DirectorySearcher ds = new DirectorySearcher();
                 FileSearcher fs = new FileSearcher();
+
                 try
                 {
-                    ds.getDirectoryInDrive(item);
-                }catch(IOException iE)  //준비되지않은 장치 일경우(CD-ROM 등)
+                    //드라이브내의 파일들을 기록
+                    using (SQLiteConnection conn = new SQLiteConnection(SqliteQueryCreater.SqlConnectionString))
+                    {
+                        conn.Open();
+                        WriteSQLDirectoriesByDirs(ds.getDirectoryInDrive(item), conn);
+                        conn.Close();
+                    }
+                }
+                catch(IOException iE)  //준비되지않은 장치 일경우(CD-ROM 등)
                 {
+                    Console.Out.WriteLine(iE.Message);
                     break;
                 }
-
             }
-            
-
         }
+
+        private void WriteSQLDirectoriesByDirs(List<FolderInfoModel> directories, SQLiteConnection conn)
+        {
+            foreach(FolderInfoModel item in directories)
+            {
+                try { 
+                    reflectionDirectorySearch(item, conn);
+                }
+                catch (IOException iE)
+                {
+                    Console.Out.WriteLine(iE.Message);
+                    continue;
+                }
+            }
+        }
+
+        //해당 폴더의 파일과 폴더가 없을때까지 검색한다
+        private void reflectionDirectorySearch(FolderInfoModel folder, SQLiteConnection conn)
+        {
+            SqliteExcuteQuery query = new SqliteExcuteQuery();
+            long index = query.InsertFolderTable(folder, conn);
+            folder.folder_code = Int32.Parse(index.ToString());
+            try
+            {
+                WriteSQLFiles(folder, conn);
+            }catch(Exception e)
+            {
+                Console.Out.WriteLine(e.Message);
+            }
+
+            DirectorySearcher ds = new DirectorySearcher();
+            try
+            {
+                WriteSQLDirectoriesByDirs(ds.getDirectoryInDirectory(folder), conn);
+            }catch(Exception e)
+            {
+                Console.Out.WriteLine(e.Message);
+            }
+        }
+
+        private void WriteSQLFiles(FolderInfoModel folder, SQLiteConnection conn)
+        {
+            DirectoryInfo dir = new DirectoryInfo(folder.folder_path);
+
+            foreach(FileInfo item in dir.GetFiles())
+            {
+                FIleInfoModel fModel = new FIleInfoModel();
+                fModel.folder_code = folder.folder_code;
+                fModel.file_name = item.Name;
+                fModel.file_ext = item.Extension;
+                fModel.file_volume = item.Length;
+                fModel.last_write_time = item.LastWriteTime.Ticks;
+                fModel.create_time = item.CreationTime.Ticks;
+
+                SqliteExcuteQuery query = new SqliteExcuteQuery();
+                query.InsertFileTable(fModel, conn);
+            }
+        }
+
     }
 }
