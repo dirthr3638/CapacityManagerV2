@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 using CapacityManagerMain.FileHelper;
 using CapacityManagerMain.Searcher;
 
+using CapacityManagerMain.SysIndexSearch;
+
 namespace CapacityManagerMain
 {
     /// <summary>
@@ -26,21 +28,25 @@ namespace CapacityManagerMain
         {
             InitializeComponent();
 
+            IndexSearcher searcher = new IndexSearcher();
+            searcher.test();
+
+
             //DirectorySearcher dirs = new DirectorySearcher();
             //dirs.getDirectoryWriteTime("D:/");
 
             //            FileHelper.FileSearcher fSearcher = new FileHelper.FileSearcher();
             //            fSearcher.fileListInFolder("X:/");
 
-            Sqlite.SqliteCreator createor = new Sqlite.SqliteCreator();
+            //Sqlite.SqliteCreator createor = new Sqlite.SqliteCreator();
 
-            createor.deleteSqlFile();
+            //createor.deleteSqlFile();
 
-            createor.createSqlFile();
-            createor.createScheme();
+            //createor.createSqlFile();
+            //createor.createScheme();
 
-            MainSearcher searcher = new MainSearcher();
-            searcher.mainSearch();
+            //MainSearcher searcher = new MainSearcher();
+            //searcher.mainSearch();
 
             //DriveSearcher Drive = new DriveSearcher();
             //Drive.getDriveListFromSql();

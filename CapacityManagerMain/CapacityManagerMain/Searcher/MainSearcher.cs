@@ -98,7 +98,7 @@ namespace CapacityManagerMain.Searcher
                 WriteSQLFiles(folder, conn);
             }catch(Exception e)
             {
-                Console.Out.WriteLine(e.Message);
+                Console.Out.WriteLine(e.Message + " \n " + e.Source);
             }
 
             DirectorySearcher ds = new DirectorySearcher();
@@ -107,7 +107,7 @@ namespace CapacityManagerMain.Searcher
                 WriteSQLDirectoriesByDirs(ds.getDirectoryInDirectory(folder), conn);
             }catch(Exception e)
             {
-                Console.Out.WriteLine(e.Message);
+                Console.Out.WriteLine(e.Message + " \n " + e.Source);
             }
         }
 

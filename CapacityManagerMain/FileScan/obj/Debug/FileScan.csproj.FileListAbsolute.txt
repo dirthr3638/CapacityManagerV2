@@ -1,0 +1,5 @@
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\FileScan\bin\Debug\FileScan.dll
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\FileScan\bin\Debug\FileScan.pdb
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\FileScan\obj\Debug\FileScan.csprojResolveAssemblyReference.cache
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\FileScan\obj\Debug\FileScan.dll
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\FileScan\obj\Debug\FileScan.pdb

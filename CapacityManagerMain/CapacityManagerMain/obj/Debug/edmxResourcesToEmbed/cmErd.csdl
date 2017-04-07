@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DRIVE_INFOSet" EntityType="Model1.DRIVE_INFO" />
+    <EntitySet Name="FILE_INFOSet" EntityType="Model1.FILE_INFO" />
+    <EntitySet Name="FOLDER_INFOSet" EntityType="Model1.FOLDER_INFO" />
+    <AssociationSet Name="DRIVE_INFOFOLDER_INFO" Association="Model1.DRIVE_INFOFOLDER_INFO">
+      <End Role="DRIVE_INFO" EntitySet="DRIVE_INFOSet" />
+      <End Role="FOLDER_INFO" EntitySet="FOLDER_INFOSet" />
+    </AssociationSet>
+    <AssociationSet Name="FOLDER_INFOFILE_INFO" Association="Model1.FOLDER_INFOFILE_INFO">
+      <End Role="FOLDER_INFO" EntitySet="FOLDER_INFOSet" />
+      <End Role="FILE_INFO" EntitySet="FILE_INFOSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="DRIVE_INFO">
+    <Key>
+      <PropertyRef Name="drive_code" />
+    </Key>
+    <Property Name="drive_code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="drive_name" Type="String" Nullable="false" />
+    <Property Name="drive_type" Type="String" Nullable="false" />
+    <Property Name="size" Type="Int32" Nullable="false" />
+    <Property Name="search_yn" Type="Int16" Nullable="false" />
+    <Property Name="use_yn" Type="Int16" Nullable="false" />
+    <Property Name="last_wrtie_time" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FILE_INFO">
+    <Key>
+      <PropertyRef Name="file_code" />
+    </Key>
+    <Property Name="file_code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="FOLDER_INFO" Relationship="Model1.FOLDER_INFOFILE_INFO" FromRole="FILE_INFO" ToRole="FOLDER_INFO" />
+    <Property Name="folder_code" Type="String" Nullable="false" />
+    <Property Name="file_name" Type="String" Nullable="false" />
+    <Property Name="file_ext" Type="String" Nullable="false" />
+    <Property Name="file_volume" Type="String" Nullable="false" />
+    <Property Name="last_write_time" Type="String" Nullable="false" />
+    <Property Name="create_time" Type="String" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FOLDER_INFO">
+    <Key>
+      <PropertyRef Name="folder_code" />
+    </Key>
+    <Property Name="folder_code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="DRIVE_INFO" Relationship="Model1.DRIVE_INFOFOLDER_INFO" FromRole="FOLDER_INFO" ToRole="DRIVE_INFO" />
+    <Property Name="parent_fd_cd" Type="String" Nullable="false" />
+    <Property Name="drive_code" Type="String" Nullable="false" />
+    <Property Name="folder_path" Type="String" Nullable="false" />
+    <Property Name="folder_name" Type="String" Nullable="false" />
+    <Property Name="last_write_time" Type="String" Nullable="false" />
+    <Property Name="search_yn" Type="String" Nullable="false" />
+    <Property Name="create_time" Type="String" Nullable="false" />
+  </EntityType>
+  <Association Name="DRIVE_INFOFOLDER_INFO">
+    <End Type="Model1.DRIVE_INFO" Role="DRIVE_INFO" Multiplicity="1" />
+    <End Type="Model1.FOLDER_INFO" Role="FOLDER_INFO" Multiplicity="*" />
+  </Association>
+  <Association Name="FOLDER_INFOFILE_INFO">
+    <End Type="Model1.FOLDER_INFO" Role="FOLDER_INFO" Multiplicity="1" />
+    <End Type="Model1.FILE_INFO" Role="FILE_INFO" Multiplicity="*" />
+  </Association>
+</Schema>

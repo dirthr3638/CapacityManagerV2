@@ -83,7 +83,15 @@ namespace CapacityManagerMain.Sqlite
                 conn.Open();
                 string sql = SqliteQueryCreater.insertFolder(folder);
                 SQLiteCommand cmd = new SQLiteCommand(sql, conn);
-                cmd.ExecuteNonQuery();
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception e)
+                {
+                    e.Source = sql;
+                    throw e;
+                }
                 conn.Close();
             }
 
@@ -94,7 +102,15 @@ namespace CapacityManagerMain.Sqlite
         {
             string sql = SqliteQueryCreater.insertFolder(folder);
             SQLiteCommand cmd = new SQLiteCommand(sql, conn);
-            cmd.ExecuteNonQuery();
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                e.Source = sql;
+                throw e;
+            }
             sql = SqliteQueryCreater.lastIndex();
             cmd = new SQLiteCommand(sql, conn);
             long lastId = (long)cmd.ExecuteScalar();
@@ -109,7 +125,15 @@ namespace CapacityManagerMain.Sqlite
                 conn.Open();
                 string sql = SqliteQueryCreater.insertFile(file);
                 SQLiteCommand cmd = new SQLiteCommand(sql, conn);
-                cmd.ExecuteNonQuery();
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception e)
+                {
+                    e.Source = sql;
+                    throw e;
+                }
                 conn.Close();
             }
 
@@ -120,7 +144,15 @@ namespace CapacityManagerMain.Sqlite
         {
             string sql = SqliteQueryCreater.insertFile(file);
             SQLiteCommand cmd = new SQLiteCommand(sql, conn);
-            cmd.ExecuteNonQuery();
+
+            try
+            { 
+                cmd.ExecuteNonQuery();
+            }catch(Exception e)
+            {
+                e.Source = sql;
+                throw e;
+            }
         }
 
 

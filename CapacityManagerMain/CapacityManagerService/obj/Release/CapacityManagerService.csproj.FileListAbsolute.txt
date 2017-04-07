@@ -1,0 +1,6 @@
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CapacityManagerService\bin\Release\CapacityManagerService.exe.config
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CapacityManagerService\bin\Release\CapacityManagerService.exe
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CapacityManagerService\bin\Release\CapacityManagerService.pdb
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CapacityManagerService\obj\Release\CapacityManagerService.csprojResolveAssemblyReference.cache
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CapacityManagerService\obj\Release\CapacityManagerService.exe
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CapacityManagerService\obj\Release\CapacityManagerService.pdb

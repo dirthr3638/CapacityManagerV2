@@ -1,0 +1,6 @@
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CM_Console_RnnTest\bin\Debug\CM_Console_RnnTest.exe.config
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CM_Console_RnnTest\bin\Debug\CM_Console_RnnTest.exe
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CM_Console_RnnTest\bin\Debug\CM_Console_RnnTest.pdb
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CM_Console_RnnTest\obj\Debug\CM_Console_RunTest.csprojResolveAssemblyReference.cache
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CM_Console_RnnTest\obj\Debug\CM_Console_RnnTest.exe
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CM_Console_RnnTest\obj\Debug\CM_Console_RnnTest.pdb

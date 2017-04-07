@@ -1,0 +1,7 @@
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CM_UnitTest\bin\Debug\CM_UnitTest.dll
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CM_UnitTest\bin\Debug\CM_UnitTest.pdb
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CM_UnitTest\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CM_UnitTest\bin\Debug\ko\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CM_UnitTest\obj\Debug\CM_UnitTest.csprojResolveAssemblyReference.cache
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CM_UnitTest\obj\Debug\CM_UnitTest.dll
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CM_UnitTest\obj\Debug\CM_UnitTest.pdb

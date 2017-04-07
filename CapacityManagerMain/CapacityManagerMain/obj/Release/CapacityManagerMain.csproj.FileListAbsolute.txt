@@ -1,0 +1,16 @@
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CapacityManagerMain\bin\Release\CapacityManagerMain.exe.config
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CapacityManagerMain\bin\Release\CapacityManagerMain.exe
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CapacityManagerMain\bin\Release\CapacityManagerMain.pdb
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CapacityManagerMain\bin\Release\System.Data.SQLite.dll
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CapacityManagerMain\bin\Release\System.Data.SQLite.pdb
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CapacityManagerMain\obj\Release\MainWindow.g.cs
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CapacityManagerMain\obj\Release\App.g.cs
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CapacityManagerMain\obj\Release\CapacityManagerMain_MarkupCompile.cache
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CapacityManagerMain\obj\Release\CapacityManagerMain_MarkupCompile.lref
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CapacityManagerMain\obj\Release\MainWindow.baml
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CapacityManagerMain\obj\Release\CapacityManagerMain.g.resources
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CapacityManagerMain\obj\Release\CapacityManagerMain.Properties.Resources.resources
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CapacityManagerMain\obj\Release\CapacityManagerMain.csproj.GenerateResource.Cache
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CapacityManagerMain\obj\Release\CapacityManagerMain.exe
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CapacityManagerMain\obj\Release\CapacityManagerMain.pdb
+C:\Users\mjoh\Documents\CapacityManagerV2\CapacityManagerMain\CapacityManagerMain\obj\Release\CapacityManagerMain.csprojResolveAssemblyReference.cache

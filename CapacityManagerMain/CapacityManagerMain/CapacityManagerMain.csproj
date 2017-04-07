@@ -53,6 +53,13 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FileScan">
+      <HintPath>..\FileScan\bin\Debug\FileScan.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Search.Interop">
+      <HintPath>..\..\..\..\Desktop\Microsoft.Search.Interop.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.SQLite">
@@ -93,6 +100,7 @@
     <Compile Include="Sqlite\SqliteCreator.cs" />
     <Compile Include="Sqlite\SqliteExcuteQuery.cs" />
     <Compile Include="Sqlite\SqliteQueryCreater.cs" />
+    <Compile Include="SysIndexSearch\IndexSearcher.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
